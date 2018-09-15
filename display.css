@@ -1,0 +1,139 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.hidden-site{
+	display: none;
+	overflow: hidden;
+}
+/* giao dien start */
+.start{
+	margin: 0 auto;
+	position: relative;
+	width: 400px;
+	height: 600px;
+	background-color: #8bb6bb;
+	text-align: center;
+	color: red;
+	font-family: cursive;
+}
+.start h1{
+	font-size: 80px;
+}
+.playBut{
+	position: absolute;
+	height: 80px;
+	width: 150px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,120px);
+	background-color: #ff5722;
+	border: none;
+	color: white;
+	font-size: 40px;
+	border-radius: 10px;
+}
+.playBut:hover{
+	background-color: #f3673a;
+}
+/* giao dien game play */
+.play{
+	margin: 0 auto;
+	position: relative;
+	width: 400px;
+	height: 600px;
+	background-color: yellow;
+	font-family: cursive;
+}
+.play h2{
+	font-family: cursive;
+	font-size: 20px;
+	padding-left: 10px;
+}
+.question{
+	width: 400px;
+	margin: 0 auto;
+	padding: 100px 0; 
+	color: white;
+	font-size: 80px;
+	text-align: center;
+}
+.answer-box{
+	height: 40px;
+	width: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 30px;
+}
+.check-button{
+	height: 40px;
+	padding: 0 10px; 
+}
+.trueBut{
+	margin-left: 33px;
+	height: 75px;
+	width: 150px;
+	background-color: #00da00;
+	color: white;
+	border: none;
+	line-height: 75px;
+	text-align: center;
+	font-size: 40px;
+	font-family: cursive;
+	border-radius: 5px;
+}
+.trueBut:hover{
+	background-color: #36a03b;
+}
+.falseBut{
+	margin-left: 34px; 
+	height: 75px;
+	width: 150px;
+	background-color: red;
+	color: white;
+	border: none;
+	line-height: 75px;
+	text-align: center;
+	font-size: 40px;
+	font-family: cursive;
+	border-radius: 5px;
+}
+.falseBut:hover{
+	background-color: #f44336;
+}
+.timeBar{
+	width: 400px;
+	height: 10px;
+	background-color: white;
+}
+.score{
+	height: 40px;
+	line-height: 40px;
+	font-size: 30px;
+	color: white;
+	position: absolute;
+	bottom: 0;
+	left: 10px;
+}
+/* giao dien game over */
+.over{
+	width: 400px;
+	text-align: center;
+	margin: 0 auto;
+	position: relative;
+	width: 400px;
+	height: 600px;
+	background-color: #8bb6bb;
+	font-family: cursive;
+}
+.over h1{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	font-size: 60px;
+	color: red;
+}
+.over h2{
+	line-height: 65px;
+	font-size: 40px;
+	color: #007505;
+}

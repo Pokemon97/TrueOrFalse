@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Game</title>
+		<meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="display.css">
+<style>
+*{
+	padding: 0;
+	margin: 0;
+}
+.hidden-site{
+	display: none;
+	overflow: hidden;
+}
+/* giao dien start */ 
+.start{
+	margin: 0 auto;
+	position: relative;
+	width: 400px;
+	height: 600px;
+	background-color: #8bb6bb;
+	text-align: center;
+	color: red;
+	font-family: cursive;
+}
+.start h1{
+	font-size: 80px;
+}
+.playBut{
+	position: absolute;
+	height: 80px;
+	width: 150px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,120px);
+	background-color: #ff5722;
+	border: none;
+	color: white;
+	font-size: 40px;
+	border-radius: 10px;
+}
+.playBut:hover{
+	background-color: #f3673a;
+}
+/* giao dien game play */
+.play{
+	margin: 0 auto;
+	position: relative;
+	width: 400px;
+	height: 600px;
+	background-color: yellow;
+	font-family: cursive;
+}
+.play h2{
+	font-family: cursive;
+	font-size: 20px;
+	padding-left: 10px;
+}
+.question{
+	width: 400px;
+	margin: 0 auto;
+	padding: 100px 0; 
+	color: white;
+	font-size: 80px;
+	text-align: center;
+}
+.answer-box{
+	height: 40px;
+	width: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 30px;
+}
+.check-button{
+	height: 40px;
+	padding: 0 10px; 
+}
+.trueBut{
+	margin-left: 33px;
+	height: 75px;
+	width: 150px;
+	background-color: #00da00;
+	color: white;
+	border: none;
+	line-height: 75px;
+	text-align: center;
+	font-size: 40px;
+	font-family: cursive;
+	border-radius: 5px;
+}
+.trueBut:hover{
+	background-color: #36a03b;
+}
+.falseBut{
+	margin-left: 34px; 
+	height: 75px;
+	width: 150px;
+	background-color: red;
+	color: white;
+	border: none;
+	line-height: 75px;
+	text-align: center;
+	font-size: 40px;
+	font-family: cursive;
+	border-radius: 5px;
+}
+.falseBut:hover{
+	background-color: #f44336;
+}
+.timeBar{
+	width: 400px;
+	height: 10px;
+	background-color: white;
+}
+.score{
+	height: 40px;
+	line-height: 40px;
+	font-size: 30px;
+	color: white;
+	position: absolute;
+	bottom: 0;
+	left: 10px;
+}
+/* giao dien game over */
+.over{
+	width: 400px;
+	text-align: center;
+	margin: 0 auto;
+	position: relative;
+	width: 400px;
+	height: 600px;
+	background-color: #8bb6bb;
+	font-family: cursive;
+}
+.over h1{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	font-size: 60px;
+	color: red;
+}
+.over h2{
+	line-height: 65px;
+	font-size: 40px;
+	color: #007505;
+
+</style>
+		<link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
+	</head>
+	<body>
+		<div class="start" id="start">
+			<h1 style="color: #04b304; padding-top: 50px;">True</h1>
+			<h1 style="color: yellow;">or</h1>
+			<h1 style="color: red;">False</h1>
+			<button class="playBut" id="playBut" onclick="playButClick()"><img src="data:image/png;base64,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"></button>
+		</div><!-- ket thuc start -->
+		<div class="hidden-site" id="play">
+			<div class="timeBar" id="timeBar"></div>
+			<div class="question"></div>
+			<button class="trueBut" id="trueBut"">true</button>
+			<button class="falseBut" id="falseBut"">false</button>
+			<div class="score"></div>
+		</div><!-- ket thuc play -->
+		<div class="hidden-site" id="over"></div><!-- ket thuc over -->
+		<script>
+			var a,b,c,d,time,i,HI=0,S;
+			var BGcolor = ['#d2d231','#2196f3','#9c27b0','#ff5722','#8bc34a','#8bb6bb'];
+			function random() {
+				a = Math.floor(Math.random() * 30); 
+				b = Math.floor(Math.random() * 30); 
+				d = a + b;
+				c = d + Math.floor(Math.random() * 3) - 1;
+				i = Math.floor(Math.random() * BGcolor.length); 
+				$('.question').text(a);
+				$('.question').append(' + ');
+				$('.question').append(b);
+				$('.question').append('<br>');
+				$('.question').append(' = ');
+				$('.question').append(c);
+				$('.play').css('background-color',BGcolor[i]);
+				$('.score').text('');
+				$('.score').append('<h2>Score: '+S+'</h2>');
+				//console.log(d);
+			}
+			function check(){
+				if(c==d) return true;
+				else return false;
+			}	
+			function result(){
+				$('#over').text('');
+				$('#over').append('<h1>Game over!</h1>');
+				$('#over').append('<h2>Score: '+S+'</h2>');
+				$('#over').append('<br>');
+				$('#over').append('<h2>High Score: '+HI+'</h2>');
+				$('#over').append('<button class="playBut" id="playBut" onclick="playButClick()"><img src="data:image/png;base64,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"></button>');
+			}
+			function resetbar(){
+				$('#timeBar').finish();
+				$('#timeBar').animate({width:'400px'},2000);
+				$('#timeBar').finish();
+				$('#timeBar').animate({width:'0px'},2000);
+			}
+			function playButClick(){
+				resetbar();
+				$('#start').attr('Class','hidden-site');
+				$('#over').attr('Class','hidden-site');
+				$('#play').attr('Class','play');
+				S=0;
+				$('.score').text('');
+				$('.score').append('<h2>Score: '+S+'</h2>');
+				random();
+				time = setTimeout(function(){
+					$('#play').attr('Class','hidden-site');
+					$('#over').attr('Class','over');
+					if(S>HI) HI=S;
+					result();
+				},2000)
+			}
+			$('#trueBut').click(function(){
+				resetbar();
+				if (check()==false) {
+					clearTimeout(time);
+					$('#play').attr('Class','hidden-site');
+					$('#over').attr('Class','over');
+					if(S>HI) HI=S;
+					result();
+				}  
+				else{
+					clearTimeout(time);
+					S++;
+					random();
+					$('.score').text('');
+					$('.score').append('<h2>Score: '+S+'</h2>');
+					time = setTimeout(function(){
+						$('#play').attr('Class','hidden-site');
+						$('#over').attr('Class','over');
+						if(S>HI) HI=S;
+						result();
+					},2000);
+				}
+			});
+			$('#falseBut').click(function(){
+				resetbar();
+				if (check()==true) {
+					clearTimeout(time);
+					$('#play').attr('Class','hidden-site');
+					$('#over').attr('Class','over');
+					if(S>HI) HI=S;
+					result();
+				} 
+				else{
+					clearTimeout(time);
+					random();
+					S++;
+					$('.score').text('');
+					$('.score').append('<h2>Score: '+S+'</h2>');
+					time = setTimeout(function(){
+						$('#play').attr('Class','hidden-site');
+						$('#over').attr('Class','over');
+						if(S>HI) HI=S;
+						result();
+					},2000);
+				}
+			});
+		</script>
+		<iframe src="https://www.nhaccuatui.com/mh/auto/zXA3aOKcOytb" width="0" height="0" frameborder="0" allowfullscreen></iframe>
+	</body>
+</html>
